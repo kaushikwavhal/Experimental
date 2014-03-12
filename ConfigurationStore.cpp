@@ -28,7 +28,6 @@ void _EEPROM_readData(int &pos, uint8_t* value, uint8_t size)
 
 
 
-
 #define EEPROM_OFFSET 100
 
 
@@ -42,7 +41,7 @@ void _EEPROM_readData(int &pos, uint8_t* value, uint8_t size)
 #ifdef EEPROM_SETTINGS
 void Config_StoreSettings() 
 {
-  char ver[4]= "000";
+  char ver[4]= "123";
   int i=EEPROM_OFFSET;
   EEPROM_WRITE_VAR(i,ver); // invalidate data first 
   EEPROM_WRITE_VAR(i,axis_steps_per_unit);  
@@ -93,6 +92,11 @@ void Config_StoreSettings()
 }
 #endif //EEPROM_SETTINGS
 
+void LCD_Settings()
+{
+lcd.setCursor(3,4);
+lcd.print("Vector PLA 3d");
+}
 
 #ifndef DISABLE_M503
 void Config_PrintSettings()
